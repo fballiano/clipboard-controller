@@ -1,6 +1,6 @@
 cask "clipboard-controller" do
-  version "1.0.0"
-  sha256 "9e42deda7fc8472629d12afc195597bc22ee6d28828c7908395b4e8d78bf15c6"
+  version "1.0.1"
+  sha256 "6d8c72250bf01fb9e1050cd6f9dc1e25900e8a806d8612e7d8b2b2137e002d8e"
 
   url "https://github.com/fballiano/clipboard-controller/releases/download/v#{version}/clipboard-controller-#{version}.dmg"
   name "clipboard-controller"
