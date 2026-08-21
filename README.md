@@ -79,9 +79,9 @@ The application has no dock icon. It appears in the menu bar.
 
 | Item | What it does |
 | --- | --- |
+| Private mode | The first item. Stores nothing until you turn it off. The icon carries a line. <kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd> while the menu is open. |
 | Automatic cleaning | Cleans each new content of the clipboard. |
 | Clean the clipboard now | Cleans what is on the clipboard at this moment. |
-| Private mode | Stores nothing until you turn it off. The icon carries a line. |
 | The clips | A click puts the clip back on the clipboard. <kbd>⌘</kbd><kbd>1</kbd> to <kbd>⌘</kbd><kbd>9</kbd> reach the first nine. |
 | Search… | Opens the whole history with a search field. |
 | Export… | Writes the history to a JSON file. |

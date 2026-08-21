@@ -2,23 +2,30 @@ import SwiftUI
 
 /// The menu that drops down from the menu bar.
 ///
-/// The order is: the three switches of the cleaner and of the privacy, the
-/// clips, then the application items.
+/// The order is: the privacy switch, the two commands of the cleaner, the clips,
+/// then the application items.
+///
+/// Private mode is first, and it has its own group. A user reaches for it when
+/// something private is about to go on the clipboard, so it must be the item
+/// under the pointer, not an item to look for.
 struct MenuContent: View {
     let model: AppModel
 
     var body: some View {
+        Toggle("Private mode", isOn: Binding(
+            get: { model.privateMode },
+            set: { model.setPrivateMode($0) }
+        ))
+        .keyboardShortcut("p", modifiers: [.command, .shift])
+
+        Divider()
+
         Toggle("Automatic cleaning", isOn: Binding(
             get: { model.automaticCleaning },
             set: { model.setAutomaticCleaning($0) }
         ))
 
         Button("Clean the clipboard now") { model.cleanNow() }
-
-        Toggle("Private mode", isOn: Binding(
-            get: { model.privateMode },
-            set: { model.setPrivateMode($0) }
-        ))
 
         if !model.pinnedClips.isEmpty {
             Divider()

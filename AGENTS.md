@@ -148,6 +148,10 @@ The `Info.plist` at `Support/Info.plist` also receives keys from `project.yml`.
 Keep this rule. A new command needs one method on `AppModel`, then a call from
 each entry point. Do not put logic in a view, a script command or an intent.
 
+Private mode is the first item of the menu, in its own group. A user reaches for
+it when something private is about to go on the clipboard, so it must be the item
+under the pointer. Do not move it down the list.
+
 ### The path of one copy
 
 ```
