@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+
+<dictionary title="clipboard-controller">
+    <suite name="clipboard-controller Suite" code="CLPC" description="clipboard-controller scripts">
+        <command name="clean clipboard" code="CLPCclen" description="Clean the content of the clipboard now">
+            <cocoa class="CleanClipboardCommand"/>
+            <result type="boolean" description="True when the clipboard changed"/>
+        </command>
+        <command name="start cleaning" code="CLPCsclr" description="Turn the automatic cleaning on">
+            <cocoa class="StartCleaningCommand"/>
+        </command>
+        <command name="stop cleaning" code="CLPCeclr" description="Turn the automatic cleaning off">
+            <cocoa class="StopCleaningCommand"/>
+        </command>
+        <command name="start private mode" code="CLPCsprv" description="Stop the recording of the clipboard">
+            <cocoa class="StartPrivateModeCommand"/>
+        </command>
+        <command name="stop private mode" code="CLPCeprv" description="Start the recording of the clipboard again">
+            <cocoa class="StopPrivateModeCommand"/>
+        </command>
+        <command name="last clip" code="CLPClast" description="Return the text of the newest clip">
+            <cocoa class="LastClipCommand"/>
+            <result type="text" description="The text of the newest clip"/>
+        </command>
+        <command name="clear history" code="CLPCclhs" description="Delete every clip that is not pinned">
+            <cocoa class="ClearHistoryCommand"/>
+        </command>
+    </suite>
+</dictionary>
