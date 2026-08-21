@@ -28,6 +28,20 @@ struct PreferencesTests {
         #expect(preferences.maxClipAgeDays == Preferences.unlimited)
         #expect(preferences.menuClipCount == Preferences.defaultMenuClipCount)
         #expect(preferences.excludedRecordingApps.isEmpty)
+
+        // The app registers the login item at the first launch, so the flag
+        // starts false and becomes true once.
+        #expect(!preferences.appliedDefaultLoginItem)
+    }
+
+    @Test("The flag of the login item is written once and stays")
+    func appliedDefaultLoginItem() {
+        let defaults = makeDefaults()
+        let preferences = Preferences(defaults: defaults)
+
+        preferences.appliedDefaultLoginItem = true
+
+        #expect(Preferences(defaults: defaults).appliedDefaultLoginItem)
     }
 
     @Test("A change is written to the store")

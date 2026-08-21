@@ -16,6 +16,7 @@ final class Preferences {
         static let maxImageBytes = "maxImageBytes"
         static let menuClipCount = "menuClipCount"
         static let showNotifications = "showNotifications"
+        static let appliedDefaultLoginItem = "appliedDefaultLoginItem"
 
         // The cleaner.
         static let automaticCleaning = "automaticCleaning"
@@ -65,6 +66,7 @@ final class Preferences {
             Key.maxImageBytes: Self.defaultMaxImageBytes,
             Key.menuClipCount: Self.defaultMenuClipCount,
             Key.showNotifications: true,
+            Key.appliedDefaultLoginItem: false,
             Key.automaticCleaning: true,
             Key.removeFormatting: true,
             Key.preserveLinks: false,
@@ -87,6 +89,7 @@ final class Preferences {
         maxImageBytes = max(0, defaults.integer(forKey: Key.maxImageBytes))
         storedMenuClipCount = max(1, defaults.integer(forKey: Key.menuClipCount))
         showNotifications = defaults.bool(forKey: Key.showNotifications)
+        appliedDefaultLoginItem = defaults.bool(forKey: Key.appliedDefaultLoginItem)
 
         automaticCleaning = defaults.bool(forKey: Key.automaticCleaning)
         removeFormatting = defaults.bool(forKey: Key.removeFormatting)
@@ -184,6 +187,16 @@ final class Preferences {
     /// Show a banner after a command of a hot key.
     var showNotifications: Bool {
         didSet { defaults.set(showNotifications, forKey: Key.showNotifications) }
+    }
+
+    /// `true` after the app has registered the login item once.
+    ///
+    /// The app starts at login by default, so the first launch registers the
+    /// login item. This flag stops it from doing that a second time. Without it
+    /// the app would switch the setting back on at every launch, and a user who
+    /// turned it off could never keep it off.
+    var appliedDefaultLoginItem: Bool {
+        didSet { defaults.set(appliedDefaultLoginItem, forKey: Key.appliedDefaultLoginItem) }
     }
 
     // MARK: - The cleaner

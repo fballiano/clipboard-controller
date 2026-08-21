@@ -70,9 +70,31 @@ final class AppModel {
         didBootstrap = true
 
         applyLimits()
+        applyDefaultLoginItem()
         notifier.prepare()
         startMonitor()
         registerHotKeys()
+    }
+
+    /// Starts the app at login, once.
+    ///
+    /// The app has no dock icon and no window, so a user who does not find it
+    /// after a restart thinks it is gone. The first launch therefore registers
+    /// the login item. A later change by the user stays: the flag says that the
+    /// default was applied, so the app never sets it again.
+    private func applyDefaultLoginItem() {
+        guard !preferences.appliedDefaultLoginItem else { return }
+
+        if loginItem.isEnabled {
+            preferences.appliedDefaultLoginItem = true
+            return
+        }
+
+        loginItem.isEnabled = true
+
+        // Only a registration that worked counts. A failure is tried again at
+        // the next launch.
+        preferences.appliedDefaultLoginItem = loginItem.isEnabled
     }
 
     private func startMonitor() {

@@ -103,7 +103,7 @@ Open **Preferences…** from the menu, or press <kbd>⌘</kbd><kbd>,</kbd>.
 | Show N clips in the menu | 20 | How many clips the menu lists. |
 | Delete the old clips automatically | on, keep 200 | Keeps only the newest N clips. |
 | Delete a clip after some days | off | An age limit, from 1 to 365 days. |
-| Start clipboard-controller at login | off | Registers a login item through `SMAppService`. |
+| Start clipboard-controller at login | **on** | Registers a login item through `SMAppService`. The first launch switches it on. A later change by you stays. |
 | Show notifications | on | A banner after a command of a hot key. |
 
 A pinned clip stays. No limit ever deletes it.

@@ -231,6 +231,12 @@ test run. `RuntimeEnvironment.isRunningTests` guards the side effects:
 - `Notifier` does not ask for notification permission.
 - `LoginItem` does not call `SMAppService`.
 
+The app starts at login by default. `AppModel.applyDefaultLoginItem()` registers
+the login item at the first launch and writes
+`Preferences.appliedDefaultLoginItem`. Never register it without that flag: the
+app would switch the setting back on at every launch, and a user who turned it
+off could never keep it off.
+
 Add the same guard to any new code that touches the system or the user data.
 
 ### Injection for tests
