@@ -22,21 +22,18 @@
 		442B29D684E46240571CA2BD /* ImageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7CF82FC58777CA79755D7C /* ImageSupport.swift */; };
 		48AB808C37141401132D1F4E /* ClipboardControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458E9E8A4CA13030552E45E /* ClipboardControllerApp.swift */; };
 		57E1CCBD57D420D7C95E7F3F /* Sanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73AFD9072BC13DB9EA0C4C /* Sanitizer.swift */; };
-		6010E65466B6D1B3E4EF6534 /* ClipMenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F273069EA855797038784F0 /* ClipMenuRow.swift */; };
 		624C212D6AE93CA527F06422 /* ClipboardIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A63304481FA801524042F3 /* ClipboardIntents.swift */; };
 		62F92E4E4B282A379118330E /* HistoryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E0A40837005F55C7E1767 /* HistoryWindowController.swift */; };
-		6B59BC8452EF2CA7026640FD /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E9DAA54B93D18505F1C83 /* MenuContent.swift */; };
 		7CEC415AEC2D00D87963921A /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 708A2B8435C3090B39A6EFC4 /* KeyboardShortcuts */; };
+		8E138AAA74BC54CCFC881437 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447E620E5C7F49F50ED76873 /* MenuBarController.swift */; };
 		9CE4AEED6C190EFB7FCCE969 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C541E714DF5297332D44D /* SettingsWindowController.swift */; };
 		A96D7B4CC28FF3F83FA58031 /* TrackingParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863BC64B7C0AB77CD81D973 /* TrackingParametersTests.swift */; };
 		AA16CE8F3459F73C41113C58 /* ClipboardGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A29C9880563EC238A4D21 /* ClipboardGlyph.swift */; };
-		AB4E7AAFA9654275DDBEF3C5 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745BBC2EF10358F329D66E0 /* Notifier.swift */; };
 		ABE11DBEBCA77E3CC3DA7EDC /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBD6FF2076783468C81CF91 /* HistoryView.swift */; };
 		B14E4CFC9FAD28468382C81F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9372F44908826572948A0EC7 /* SettingsView.swift */; };
 		BBD33524F175BE942E2EA30F /* LoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DA1174665FA3FF649B4098 /* LoginItem.swift */; };
 		C68F04EC05820D0A5ED8D8D6 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 18448B34FC394B186FFD5D4F /* AppIcon.icon */; };
 		D30D8D91915BA02215357ADC /* RichText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316C9AE68BEADE98D8093BB6 /* RichText.swift */; };
-		D678F3DD96E1FA295F65085A /* MenuBarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115BF364220ED638B3D1823 /* MenuBarLabel.swift */; };
 		DB8B1E1710584B29EA4AF294 /* InvisibleCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217000C1BACC8B910A10EEE /* InvisibleCharacters.swift */; };
 		DFE6A8B5D2DC45584E62FD3C /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33A5DF1580B8C85D3F5EE6A /* ClipboardMonitorTests.swift */; };
 		E34D05CFF00456E7AFB853A7 /* RenameClipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E7477AD02AB9555817603 /* RenameClipController.swift */; };
@@ -65,13 +62,11 @@
 		18448B34FC394B186FFD5D4F /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		316C9AE68BEADE98D8093BB6 /* RichText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichText.swift; sourceTree = "<group>"; };
 		344E0A40837005F55C7E1767 /* HistoryWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWindowController.swift; sourceTree = "<group>"; };
-		3745BBC2EF10358F329D66E0 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		431E7477AD02AB9555817603 /* RenameClipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameClipController.swift; sourceTree = "<group>"; };
+		447E620E5C7F49F50ED76873 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		4688759CEC9C0F6428C5CC37 /* FakePasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakePasteboard.swift; sourceTree = "<group>"; };
 		4A73AFD9072BC13DB9EA0C4C /* Sanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sanitizer.swift; sourceTree = "<group>"; };
-		4F273069EA855797038784F0 /* ClipMenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipMenuRow.swift; sourceTree = "<group>"; };
 		54F21312E7C05EBD0436E190 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
-		697E9DAA54B93D18505F1C83 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
 		6F1BA59DCA3C02389DEEDA01 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7B4E04F80A483F0FE3C992D8 /* ScriptCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptCommands.swift; sourceTree = "<group>"; };
 		82957D117DC9B5A75A6C682B /* ClipboardController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClipboardController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +78,6 @@
 		AA11FB6BE6E78181A66CAA42 /* TrackingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingParameters.swift; sourceTree = "<group>"; };
 		AD7CF82FC58777CA79755D7C /* ImageSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSupport.swift; sourceTree = "<group>"; };
 		AEE89DAADA27431E0117D4C9 /* ClipStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStore.swift; sourceTree = "<group>"; };
-		B115BF364220ED638B3D1823 /* MenuBarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabel.swift; sourceTree = "<group>"; };
 		B3B587FB8897461ABF116C1B /* HotKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeys.swift; sourceTree = "<group>"; };
 		B8A63304481FA801524042F3 /* ClipboardIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardIntents.swift; sourceTree = "<group>"; };
 		BCDB5F2407A92D21D930DC7C /* clipboard-controller.sdef */ = {isa = PBXFileReference; path = "clipboard-controller.sdef"; sourceTree = "<group>"; };
@@ -157,7 +151,6 @@
 				B3B587FB8897461ABF116C1B /* HotKeys.swift */,
 				AD7CF82FC58777CA79755D7C /* ImageSupport.swift */,
 				E7DA1174665FA3FF649B4098 /* LoginItem.swift */,
-				3745BBC2EF10358F329D66E0 /* Notifier.swift */,
 				D6338DAF816878D4A605128A /* Pasteboard.swift */,
 				CF28F6DAB001859E86FDCA67 /* Preferences.swift */,
 				A05C6FE36207C6F2031DA5C3 /* RuntimeEnvironment.swift */,
@@ -179,11 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				147A29C9880563EC238A4D21 /* ClipboardGlyph.swift */,
-				4F273069EA855797038784F0 /* ClipMenuRow.swift */,
 				0EBD6FF2076783468C81CF91 /* HistoryView.swift */,
 				344E0A40837005F55C7E1767 /* HistoryWindowController.swift */,
-				B115BF364220ED638B3D1823 /* MenuBarLabel.swift */,
-				697E9DAA54B93D18505F1C83 /* MenuContent.swift */,
+				447E620E5C7F49F50ED76873 /* MenuBarController.swift */,
 				431E7477AD02AB9555817603 /* RenameClipController.swift */,
 				9372F44908826572948A0EC7 /* SettingsView.swift */,
 				EF7C541E714DF5297332D44D /* SettingsWindowController.swift */,
@@ -340,7 +331,6 @@
 			files = (
 				22BE09AEF200736EB726B08D /* AppModel.swift in Sources */,
 				4239DEE8815612D7443D06A4 /* Clip.swift in Sources */,
-				6010E65466B6D1B3E4EF6534 /* ClipMenuRow.swift in Sources */,
 				2AC3196FDEEE23003D832674 /* ClipStore.swift in Sources */,
 				001E4042C1DA3F9F15268E49 /* ClipboardContent.swift in Sources */,
 				48AB808C37141401132D1F4E /* ClipboardControllerApp.swift in Sources */,
@@ -353,9 +343,7 @@
 				442B29D684E46240571CA2BD /* ImageSupport.swift in Sources */,
 				DB8B1E1710584B29EA4AF294 /* InvisibleCharacters.swift in Sources */,
 				BBD33524F175BE942E2EA30F /* LoginItem.swift in Sources */,
-				D678F3DD96E1FA295F65085A /* MenuBarLabel.swift in Sources */,
-				6B59BC8452EF2CA7026640FD /* MenuContent.swift in Sources */,
-				AB4E7AAFA9654275DDBEF3C5 /* Notifier.swift in Sources */,
+				8E138AAA74BC54CCFC881437 /* MenuBarController.swift in Sources */,
 				F6A2225ABC332F6543FC8392 /* Pasteboard.swift in Sources */,
 				316F95AE25C7D6D84711DBFC /* Preferences.swift in Sources */,
 				E34D05CFF00456E7AFB853A7 /* RenameClipController.swift in Sources */,

@@ -12,14 +12,14 @@ import Foundation
 @objc(CleanClipboardCommand)
 final class CleanClipboardCommand: NSScriptCommand {
     override func performDefaultImplementation() -> Any? {
-        MainActor.assumeIsolated { AppModel.shared.cleanNow(notify: true) }
+        MainActor.assumeIsolated { AppModel.shared.cleanNow() }
     }
 }
 
 @objc(StartCleaningCommand)
 final class StartCleaningCommand: NSScriptCommand {
     override func performDefaultImplementation() -> Any? {
-        MainActor.assumeIsolated { AppModel.shared.setAutomaticCleaning(true, notify: true) }
+        MainActor.assumeIsolated { AppModel.shared.setAutomaticCleaning(true) }
         return nil
     }
 }
@@ -27,7 +27,7 @@ final class StartCleaningCommand: NSScriptCommand {
 @objc(StopCleaningCommand)
 final class StopCleaningCommand: NSScriptCommand {
     override func performDefaultImplementation() -> Any? {
-        MainActor.assumeIsolated { AppModel.shared.setAutomaticCleaning(false, notify: true) }
+        MainActor.assumeIsolated { AppModel.shared.setAutomaticCleaning(false) }
         return nil
     }
 }
@@ -35,7 +35,7 @@ final class StopCleaningCommand: NSScriptCommand {
 @objc(StartPrivateModeCommand)
 final class StartPrivateModeCommand: NSScriptCommand {
     override func performDefaultImplementation() -> Any? {
-        MainActor.assumeIsolated { AppModel.shared.setPrivateMode(true, notify: true) }
+        MainActor.assumeIsolated { AppModel.shared.setPrivateMode(true) }
         return nil
     }
 }
@@ -43,7 +43,7 @@ final class StartPrivateModeCommand: NSScriptCommand {
 @objc(StopPrivateModeCommand)
 final class StopPrivateModeCommand: NSScriptCommand {
     override func performDefaultImplementation() -> Any? {
-        MainActor.assumeIsolated { AppModel.shared.setPrivateMode(false, notify: true) }
+        MainActor.assumeIsolated { AppModel.shared.setPrivateMode(false) }
         return nil
     }
 }

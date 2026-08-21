@@ -104,7 +104,6 @@ Open **Preferences…** from the menu, or press <kbd>⌘</kbd><kbd>,</kbd>.
 | Delete the old clips automatically | on, keep 200 | Keeps only the newest N clips. |
 | Delete a clip after some days | off | An age limit, from 1 to 365 days. |
 | Start clipboard-controller at login | **on** | Registers a login item through `SMAppService`. The first launch switches it on. A later change by you stays. |
-| Show notifications | on | A banner after a command of a hot key. |
 
 A pinned clip stays. No limit ever deletes it.
 
@@ -243,9 +242,8 @@ A push of a tag `v*` builds the DMG and publishes a release from GitHub Actions.
 | Part | Choice |
 | --- | --- |
 | Language | Swift 6, strict concurrency |
-| Interface | SwiftUI `MenuBarExtra` |
+| Interface | AppKit `NSMenu` for the menu, SwiftUI for the windows |
 | Storage | SwiftData |
-| Notifications | `UserNotifications` |
 | Global hot keys | [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) |
 | Login item | `SMAppService` |
 | Tests | Swift Testing |
@@ -263,7 +261,6 @@ Sources/ClipboardController/
 ├── ImageSupport.swift            the pictures and their small copies
 ├── Preferences.swift             the settings
 ├── HotKeys.swift                 the global shortcut names
-├── Notifier.swift                banners
 ├── LoginItem.swift               start at login
 ├── Cleaning/                     the cleaner and its two tables
 ├── Views/                        the menu, the settings, the history

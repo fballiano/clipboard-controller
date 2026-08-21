@@ -68,7 +68,6 @@ private struct GeneralSettingsView: View {
 
             Section("Startup") {
                 Toggle("Start clipboard-controller at login", isOn: $loginItem.isEnabled)
-                Toggle("Show notifications", isOn: $preferences.showNotifications)
 
                 if let error = loginItem.lastError {
                     Text(error)

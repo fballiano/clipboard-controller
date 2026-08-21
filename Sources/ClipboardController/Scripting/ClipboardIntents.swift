@@ -15,7 +15,7 @@ struct CleanClipboardIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
-        .result(value: AppModel.shared.cleanNow(notify: true))
+        .result(value: AppModel.shared.cleanNow())
     }
 }
 
@@ -29,7 +29,7 @@ struct SetAutomaticCleaningIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult {
-        AppModel.shared.setAutomaticCleaning(enabled, notify: true)
+        AppModel.shared.setAutomaticCleaning(enabled)
         return .result()
     }
 }
@@ -44,7 +44,7 @@ struct SetPrivateModeIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult {
-        AppModel.shared.setPrivateMode(enabled, notify: true)
+        AppModel.shared.setPrivateMode(enabled)
         return .result()
     }
 }

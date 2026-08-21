@@ -4,8 +4,9 @@ import Foundation
 /// Reads an image from the clipboard and makes a small copy for the menu.
 @MainActor
 enum ImageSupport {
-    /// The width and the height of the picture in the menu row.
-    static let thumbnailSide: CGFloat = 32
+    /// The width and the height of the picture in the menu row and in the
+    /// history window.
+    static let thumbnailSide: CGFloat = 48
 
     /// The pasteboard types that hold a picture, best first.
     static let types: [NSPasteboard.PasteboardType] = [
@@ -75,6 +76,41 @@ enum ImageSupport {
         source.draw(in: NSRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
 
         return target.representation(using: .png, properties: [:])
+    }
+
+    /// The thumbnail on a square canvas, in the middle.
+    ///
+    /// A menu row puts the title after the icon, so a wide picture pushes its
+    /// title further to the right than a tall one. A square icon gives every
+    /// image row the same indent. Empty data gives a clear square, which holds
+    /// the same space for a text row.
+    ///
+    /// The square is made here and not when the picture arrives, because a clip
+    /// of an older version already holds a thumbnail of its own proportions.
+    static func squareIcon(from data: Data?, side sideLength: CGFloat = thumbnailSide) -> NSImage {
+        let side = NSSize(width: sideLength, height: sideLength)
+        let canvas = NSImage(size: side)
+
+        canvas.lockFocus()
+        defer { canvas.unlockFocus() }
+
+        if let data, let image = NSImage(data: data) {
+            let size = image.size
+            guard size.width > 0, size.height > 0 else { return canvas }
+
+            let scale = min(side.width / size.width, side.height / size.height, 1)
+            let width = size.width * scale
+            let height = size.height * scale
+
+            image.draw(in: NSRect(
+                x: (side.width - width) / 2,
+                y: (side.height - height) / 2,
+                width: width,
+                height: height
+            ))
+        }
+
+        return canvas
     }
 
     /// `1280 × 720`, for the row title. The function only formats two numbers,

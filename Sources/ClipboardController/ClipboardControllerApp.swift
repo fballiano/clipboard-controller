@@ -1,21 +1,36 @@
-import SwiftUI
+import AppKit
 
+/// The start of the application.
+///
+/// AppKit owns the life of the app, and SwiftUI does not. The menu of the menu
+/// bar needs an `NSMenu`, because only AppKit gives a row a picture that is
+/// larger than the text. SwiftUI still draws the windows: the history, the
+/// preferences and the rename sheet.
 @main
-struct ClipboardControllerApp: App {
-    @State private var model: AppModel
+@MainActor
+enum ClipboardControllerApp {
+    /// `NSApplication` keeps no strong reference to its delegate, so the
+    /// delegate lives here.
+    private static let delegate = AppDelegate()
 
-    init() {
+    static func main() {
+        let app = NSApplication.shared
+        app.delegate = delegate
+        app.run()
+    }
+}
+
+@MainActor
+final class AppDelegate: NSObject, NSApplicationDelegate {
+    private var menuBar: MenuBarController?
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        // The tests load into the real application, so the application launches
+        // during a test run. It must add no item to the menu bar of the user.
+        guard !RuntimeEnvironment.isRunningTests else { return }
+
         let model = AppModel.shared
         model.bootstrap()
-        _model = State(initialValue: model)
-    }
-
-    var body: some Scene {
-        MenuBarExtra {
-            MenuContent(model: model)
-        } label: {
-            MenuBarLabel(model: model)
-        }
-        .menuBarExtraStyle(.menu)
+        menuBar = MenuBarController(model: model)
     }
 }

@@ -15,7 +15,6 @@ final class Preferences {
         static let maxTextLength = "maxTextLength"
         static let maxImageBytes = "maxImageBytes"
         static let menuClipCount = "menuClipCount"
-        static let showNotifications = "showNotifications"
         static let appliedDefaultLoginItem = "appliedDefaultLoginItem"
 
         // The cleaner.
@@ -65,7 +64,6 @@ final class Preferences {
             Key.maxTextLength: Self.defaultMaxTextLength,
             Key.maxImageBytes: Self.defaultMaxImageBytes,
             Key.menuClipCount: Self.defaultMenuClipCount,
-            Key.showNotifications: true,
             Key.appliedDefaultLoginItem: false,
             Key.automaticCleaning: true,
             Key.removeFormatting: true,
@@ -88,7 +86,6 @@ final class Preferences {
         maxTextLength = max(0, defaults.integer(forKey: Key.maxTextLength))
         maxImageBytes = max(0, defaults.integer(forKey: Key.maxImageBytes))
         storedMenuClipCount = max(1, defaults.integer(forKey: Key.menuClipCount))
-        showNotifications = defaults.bool(forKey: Key.showNotifications)
         appliedDefaultLoginItem = defaults.bool(forKey: Key.appliedDefaultLoginItem)
 
         automaticCleaning = defaults.bool(forKey: Key.automaticCleaning)
@@ -182,11 +179,6 @@ final class Preferences {
     var menuClipCount: Int {
         get { storedMenuClipCount }
         set { storedMenuClipCount = min(max(1, newValue), 50) }
-    }
-
-    /// Show a banner after a command of a hot key.
-    var showNotifications: Bool {
-        didSet { defaults.set(showNotifications, forKey: Key.showNotifications) }
     }
 
     /// `true` after the app has registered the login item once.

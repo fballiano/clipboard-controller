@@ -139,7 +139,7 @@ The `Info.plist` at `Support/Info.plist` also receives keys from `project.yml`.
 
 | Entry point | File |
 | --- | --- |
-| Menu | `Views/MenuContent.swift`, `Views/ClipMenuRow.swift` |
+| Menu | `Views/MenuBarController.swift` |
 | History window | `Views/HistoryView.swift` |
 | Global hot key | `HotKeys.swift`, wired in `AppModel.registerHotKeys()` |
 | AppleScript | `Scripting/ScriptCommands.swift` with `Resources/clipboard-controller.sdef` |
@@ -147,6 +147,13 @@ The `Info.plist` at `Support/Info.plist` also receives keys from `project.yml`.
 
 Keep this rule. A new command needs one method on `AppModel`, then a call from
 each entry point. Do not put logic in a view, a script command or an intent.
+
+AppKit builds the menu, not SwiftUI. `MenuBarController` owns the `NSStatusItem`
+and the `NSMenu`, and `menuNeedsUpdate` writes the items again at each opening.
+The reason is the picture of an image clip: SwiftUI draws the icon of a menu row
+at the height of the text, and no value changes that, while an `NSMenuItem` keeps
+the size of its image and makes its row taller. `ClipboardControllerApp` is
+therefore an AppKit `main`, not a SwiftUI `App`. SwiftUI still draws the windows.
 
 Private mode is the first item of the menu, in its own group. A user reaches for
 it when something private is about to go on the clipboard, so it must be the item
@@ -228,7 +235,6 @@ test run. `RuntimeEnvironment.isRunningTests` guards the side effects:
 - `AppModel.bootstrap()` does nothing, so no hot keys, no clipboard watcher and
   no system events.
 - `ClipStore` uses an in-memory container, so the live database is safe.
-- `Notifier` does not ask for notification permission.
 - `LoginItem` does not call `SMAppService`.
 
 The app starts at login by default. `AppModel.applyDefaultLoginItem()` registers

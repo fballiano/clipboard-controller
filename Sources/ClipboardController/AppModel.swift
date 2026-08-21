@@ -26,7 +26,6 @@ final class AppModel {
 
     @ObservationIgnored private let store: ClipStore
     @ObservationIgnored private let pasteboard: PasteboardReading
-    @ObservationIgnored private let notifier = Notifier()
     @ObservationIgnored private let settingsWindow = SettingsWindowController()
     @ObservationIgnored private let historyWindow = HistoryWindowController()
     @ObservationIgnored private let renamePrompt = RenameClipController()
@@ -64,14 +63,13 @@ final class AppModel {
 
     // MARK: - Launch
 
-    /// Wires the clipboard watcher, the hot keys and the notifications.
+    /// Wires the clipboard watcher and the hot keys.
     func bootstrap() {
         guard !didBootstrap, !RuntimeEnvironment.isRunningTests else { return }
         didBootstrap = true
 
         applyLimits()
         applyDefaultLoginItem()
-        notifier.prepare()
         startMonitor()
         registerHotKeys()
     }
@@ -113,13 +111,13 @@ final class AppModel {
 
     private func registerHotKeys() {
         KeyboardShortcuts.onKeyDown(for: .toggleAutomaticCleaning) { [weak self] in
-            MainActor.assumeIsolated { self?.toggleAutomaticCleaning(notify: true) }
+            MainActor.assumeIsolated { self?.toggleAutomaticCleaning() }
         }
         KeyboardShortcuts.onKeyDown(for: .cleanNow) { [weak self] in
-            MainActor.assumeIsolated { _ = self?.cleanNow(notify: true) }
+            MainActor.assumeIsolated { _ = self?.cleanNow() }
         }
         KeyboardShortcuts.onKeyDown(for: .togglePrivateMode) { [weak self] in
-            MainActor.assumeIsolated { self?.togglePrivateMode(notify: true) }
+            MainActor.assumeIsolated { self?.togglePrivateMode() }
         }
         KeyboardShortcuts.onKeyDown(for: .showHistory) { [weak self] in
             MainActor.assumeIsolated { self?.showHistory() }
@@ -130,54 +128,31 @@ final class AppModel {
 
     var automaticCleaning: Bool { preferences.automaticCleaning }
 
-    func setAutomaticCleaning(_ value: Bool, notify: Bool = false) {
+    func setAutomaticCleaning(_ value: Bool) {
         preferences.automaticCleaning = value
-
-        if notify {
-            notifier.post(
-                value ? "Automatic cleaning is on" : "Automatic cleaning is off",
-                enabled: preferences.showNotifications
-            )
-        }
     }
 
-    func toggleAutomaticCleaning(notify: Bool = false) {
-        setAutomaticCleaning(!preferences.automaticCleaning, notify: notify)
+    func toggleAutomaticCleaning() {
+        setAutomaticCleaning(!preferences.automaticCleaning)
     }
 
     /// Cleans what is on the clipboard now. The command works even when the
     /// automatic cleaning is off.
     @discardableResult
-    func cleanNow(notify: Bool = false) -> Bool {
-        let changed = monitor?.cleanNow() ?? false
-
-        if notify {
-            notifier.post(
-                changed ? "The clipboard is clean" : "There was nothing to clean",
-                enabled: preferences.showNotifications
-            )
-        }
-
-        return changed
+    func cleanNow() -> Bool {
+        monitor?.cleanNow() ?? false
     }
 
     // MARK: - Privacy
 
     var privateMode: Bool { preferences.privateMode }
 
-    func setPrivateMode(_ value: Bool, notify: Bool = false) {
+    func setPrivateMode(_ value: Bool) {
         preferences.privateMode = value
-
-        if notify {
-            notifier.post(
-                value ? "Private mode is on. Nothing is stored." : "Private mode is off",
-                enabled: preferences.showNotifications
-            )
-        }
     }
 
-    func togglePrivateMode(notify: Bool = false) {
-        setPrivateMode(!preferences.privateMode, notify: notify)
+    func togglePrivateMode() {
+        setPrivateMode(!preferences.privateMode)
     }
 
     // MARK: - The history

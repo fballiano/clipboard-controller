@@ -21,7 +21,9 @@ struct HistoryView: View {
             footer
         }
         .frame(minWidth: 520, minHeight: 380)
-        .onAppear { isSearchFocused = true }
+        // The focus waits for one turn of the run loop, because the window is
+        // not the key window yet while the view appears.
+        .task { isSearchFocused = true }
     }
 
     // MARK: - The parts
@@ -143,7 +145,7 @@ private struct HistoryRow: View {
     var body: some View {
         HStack(spacing: 10) {
             icon
-                .frame(width: 32, height: 32)
+                .frame(width: ImageSupport.thumbnailSide, height: ImageSupport.thumbnailSide)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(clip.title)
@@ -165,25 +167,17 @@ private struct HistoryRow: View {
         .padding(.vertical, 2)
     }
 
+    /// The picture of an image clip. A text clip keeps the empty space, so
+    /// every title of the list keeps the same left edge.
+    ///
+    /// A symbol for the kind is gone: the second line of the row already names
+    /// the kind, and the same symbol on every row says nothing.
     @ViewBuilder
     private var icon: some View {
         if let data = clip.thumbnailData, let image = NSImage(data: data) {
             Image(nsImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-        } else {
-            Image(systemName: symbol)
-                .font(.title3)
-                .foregroundStyle(.secondary)
-        }
-    }
-
-    private var symbol: String {
-        switch clip.kind {
-        case .url: "link"
-        case .richText: "textformat"
-        case .image: "photo"
-        case .plainText: "text.alignleft"
         }
     }
 }
