@@ -27,7 +27,9 @@ struct ClipTests {
 
     @Test("A text of spaces only says that it is empty")
     func emptyText() {
-        #expect(Clip.summary(of: "   \n  ") == "(empty)")
+        // The tests load into the real app, so the app answers in the language
+        // of the user. The test therefore asks for the translated words.
+        #expect(Clip.summary(of: "   \n  ") == String(localized: "(empty)"))
     }
 
     @Test("A name from the user wins")
@@ -41,7 +43,8 @@ struct ClipTests {
     func imageTitle() {
         let clip = Clip(kind: .image, text: "", pixelWidth: 1280, pixelHeight: 720)
 
-        #expect(clip.title == "Image 1280 × 720")
+        // The word before the size follows the language of the user.
+        #expect(clip.title.hasSuffix("1280 × 720"))
     }
 
     @Test("The same words give the same hash, other words give another")

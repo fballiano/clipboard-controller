@@ -67,7 +67,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
 
         add(
             to: menu,
-            title: "Private mode",
+            title: String(localized: "Private mode"),
             action: #selector(togglePrivateMode),
             key: "p",
             modifiers: [.command, .shift],
@@ -78,38 +78,43 @@ final class MenuBarController: NSObject, NSMenuDelegate {
 
         add(
             to: menu,
-            title: "Automatic cleaning",
+            title: String(localized: "Automatic cleaning"),
             action: #selector(toggleAutomaticCleaning),
             state: model.automaticCleaning
         )
-        add(to: menu, title: "Clean the clipboard now", action: #selector(cleanNow))
+        add(to: menu, title: String(localized: "Clean the clipboard now"), action: #selector(cleanNow))
 
         addClips(to: menu)
 
         if let storeError = model.storeError {
             menu.addItem(.separator())
-            add(to: menu, title: "Database error: \(storeError)", action: nil, enabled: false)
+            add(
+                to: menu,
+                title: String(localized: "Database error: \(storeError)"),
+                action: nil,
+                enabled: false
+            )
         }
 
         menu.addItem(.separator())
 
-        add(to: menu, title: "Search…", action: #selector(showHistory), key: "f")
-        add(to: menu, title: "Export…", action: #selector(export))
+        add(to: menu, title: String(localized: "Search…"), action: #selector(showHistory), key: "f")
+        add(to: menu, title: String(localized: "Export…"), action: #selector(export))
         add(
             to: menu,
-            title: "Clear the history",
+            title: String(localized: "Clear the history"),
             action: #selector(clearHistory),
             enabled: !model.clips.isEmpty
         )
 
         menu.addItem(.separator())
 
-        add(to: menu, title: "Preferences…", action: #selector(showSettings), key: ",")
-        add(to: menu, title: "About clipboard-controller", action: #selector(showAbout))
+        add(to: menu, title: String(localized: "Preferences…"), action: #selector(showSettings), key: ",")
+        add(to: menu, title: String(localized: "About clipboard-controller"), action: #selector(showAbout))
 
         menu.addItem(.separator())
 
-        add(to: menu, title: "Quit clipboard-controller", action: #selector(quit), key: "q")
+        add(to: menu, title: String(localized: "Quit clipboard-controller"), action: #selector(quit), key: "q")
     }
 
     /// The pinned clips, then the newest clips. The first nine rows of the two
@@ -119,7 +124,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
 
         if !model.pinnedClips.isEmpty {
             menu.addItem(.separator())
-            menu.addItem(.sectionHeader(title: "Pinned"))
+            menu.addItem(.sectionHeader(title: String(localized: "Pinned")))
 
             for clip in model.pinnedClips {
                 menu.addItem(clipItem(for: clip, number: number))
@@ -160,12 +165,12 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         let submenu = NSMenu()
         submenu.autoenablesItems = false
 
-        add(to: submenu, title: "Copy", action: #selector(copyClip(_:)), clip: clip)
+        add(to: submenu, title: String(localized: "Copy"), action: #selector(copyClip(_:)), clip: clip)
 
         if clip.richData != nil {
             add(
                 to: submenu,
-                title: "Copy as plain text",
+                title: String(localized: "Copy as plain text"),
                 action: #selector(copyClipAsPlainText(_:)),
                 clip: clip
             )
@@ -173,15 +178,15 @@ final class MenuBarController: NSObject, NSMenuDelegate {
 
         add(
             to: submenu,
-            title: clip.isPinned ? "Unpin" : "Pin",
+            title: clip.isPinned ? String(localized: "Unpin") : String(localized: "Pin"),
             action: #selector(togglePin(_:)),
             clip: clip
         )
-        add(to: submenu, title: "Rename…", action: #selector(rename(_:)), clip: clip)
+        add(to: submenu, title: String(localized: "Rename…"), action: #selector(rename(_:)), clip: clip)
 
         submenu.addItem(.separator())
 
-        add(to: submenu, title: "Delete", action: #selector(delete(_:)), clip: clip)
+        add(to: submenu, title: String(localized: "Delete"), action: #selector(delete(_:)), clip: clip)
 
         return submenu
     }

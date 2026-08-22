@@ -26,6 +26,8 @@ settings:
   base:
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
+    # The build extracts every localizable literal into Localizable.xcstrings.
+    SWIFT_EMIT_LOC_STRINGS: YES
     # Universal binary: Apple silicon and Intel.
     ARCHS: $(ARCHS_STANDARD)
     VALID_ARCHS: arm64 x86_64

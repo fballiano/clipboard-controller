@@ -263,7 +263,7 @@ final class AppModel {
         panel.allowedContentTypes = [.json]
         panel.canCreateDirectories = true
         panel.nameFieldStringValue = ClipStore.exportFileName()
-        panel.title = "Export the clipboard history"
+        panel.title = String(localized: "Export the clipboard history")
 
         NSApp.activate()
 

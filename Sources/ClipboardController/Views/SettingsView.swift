@@ -182,7 +182,7 @@ private struct PrivacySettingsView: View {
 /// A list of applications, with a button that opens the Applications folder.
 private struct AppListEditor: View {
     @Binding var bundleIDs: [String]
-    let addTitle: String
+    let addTitle: LocalizedStringKey
 
     @State private var selection: String?
 
@@ -217,7 +217,7 @@ private struct AppListEditor: View {
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = false
         panel.directoryURL = URL(fileURLWithPath: "/Applications")
-        panel.title = "Select the applications"
+        panel.title = String(localized: "Select the applications")
 
         NSApp.activate()
 

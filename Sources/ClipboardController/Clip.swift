@@ -11,10 +11,10 @@ enum ClipKind: String, Codable, CaseIterable, Sendable {
 
     var label: String {
         switch self {
-        case .plainText: "Text"
-        case .richText: "Formatted text"
-        case .url: "Link"
-        case .image: "Image"
+        case .plainText: String(localized: "Text", comment: "The kind of a clip")
+        case .richText: String(localized: "Formatted text", comment: "The kind of a clip")
+        case .url: String(localized: "Link", comment: "The kind of a clip")
+        case .image: String(localized: "Image", comment: "The kind of a clip")
         }
     }
 }
@@ -126,7 +126,8 @@ extension Clip {
         if !name.isEmpty { return name }
 
         if kind == .image {
-            return "Image \(ImageSupport.sizeText(width: pixelWidth, height: pixelHeight))"
+            let size = ImageSupport.sizeText(width: pixelWidth, height: pixelHeight)
+            return String(localized: "Image \(size)", comment: "The title of an image clip")
         }
 
         return Self.summary(of: text)
@@ -145,7 +146,7 @@ extension Clip {
             collapsed = collapsed.replacingOccurrences(of: "  ", with: " ")
         }
 
-        if collapsed.isEmpty { return "(empty)" }
+        if collapsed.isEmpty { return String(localized: "(empty)") }
         if collapsed.count <= titleLimit { return collapsed }
 
         return String(collapsed.prefix(titleLimit)) + "…"
@@ -158,7 +159,7 @@ extension Clip {
         if kind == .image {
             parts.append(ImageSupport.sizeText(width: pixelWidth, height: pixelHeight))
         } else {
-            parts.append("\(text.count) characters")
+            parts.append(String(localized: "\(text.count) characters"))
         }
 
         parts.append(Self.byteText(byteCount))
@@ -167,7 +168,7 @@ extension Clip {
             parts.append(sourceAppName)
         }
         if useCount > 0 {
-            parts.append("used \(useCount)×")
+            parts.append(String(localized: "used \(useCount)×"))
         }
 
         return parts.joined(separator: " · ")

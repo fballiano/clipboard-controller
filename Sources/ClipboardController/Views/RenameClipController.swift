@@ -24,7 +24,7 @@ final class RenameClipController: NSObject {
         }
 
         let window = NSWindow(contentViewController: NSHostingController(rootView: view))
-        window.title = "Rename the clip"
+        window.title = String(localized: "Rename the clip")
         window.styleMask = [.titled, .closable]
         window.isReleasedWhenClosed = false
         window.level = .floating

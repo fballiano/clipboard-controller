@@ -113,8 +113,9 @@ struct HistoryView: View {
 
     private var countText: String {
         let count = results.count
-        if count == model.clips.count { return "\(count) clips" }
-        return "\(count) of \(model.clips.count) clips"
+        let total = model.clips.count
+        if count == total { return String(localized: "\(count) clips") }
+        return String(localized: "\(count) of \(total) clips")
     }
 
     private var selectedClip: Clip? {

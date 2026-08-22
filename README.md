@@ -34,6 +34,7 @@
 <tr><td><b>Pin and search</b></td><td>A pinned clip stays at the top and no limit deletes it. A search window reaches the whole history.</td></tr>
 <tr><td><b>Scriptable</b></td><td>AppleScript, Shortcuts and Spotlight drive the same commands.</td></tr>
 <tr><td><b>Light and dark</b></td><td>The icon follows the system, in the menu bar and in the Finder.</td></tr>
+<tr><td><b>Six languages</b></td><td>English, Italian, French, Spanish, Brazilian Portuguese and German. The application follows the language of the system.</td></tr>
 </table>
 
 ## Install
@@ -248,6 +249,7 @@ A push of a tag `v*` builds the DMG and publishes a release from GitHub Actions.
 | Login item | `SMAppService` |
 | Tests | Swift Testing |
 | Project file | XcodeGen |
+| Translations | A string catalog, `Localizable.xcstrings` |
 
 ```
 Sources/ClipboardController/
@@ -265,6 +267,9 @@ Sources/ClipboardController/
 ├── Cleaning/                     the cleaner and its two tables
 ├── Views/                        the menu, the settings, the history
 └── Scripting/                    AppleScript commands and App Intents
+
+Resources/
+└── Localizable.xcstrings         the six languages of the interface
 ```
 
 Every command has one code path. The menu, a hot key, an AppleScript command and

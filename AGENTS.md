@@ -80,6 +80,58 @@ no dark application icons. The light drawing is the fallback.
 adds the files inside the document one by one and the icon never reaches
 `actool`.
 
+## Translations
+
+The interface speaks six languages: English, the source language, and Italian,
+French, Spanish, Brazilian Portuguese and German. Every text lives in one string
+catalog, `Resources/Localizable.xcstrings`. The build compiles it into an
+`en.lproj`, `it.lproj`, `fr.lproj`, `es.lproj`, `pt-BR.lproj` and `de.lproj`
+inside the application.
+
+A new text must reach the catalog. The rule depends on the framework:
+
+- SwiftUI takes a literal as a `LocalizedStringKey` by itself, so
+  `Text("Pinned")` needs nothing. A `String` variable does not: give a view a
+  `LocalizedStringKey` property, as `AppListEditor.addTitle` does, and never a
+  `String`.
+- AppKit takes no key. Write `String(localized: "Pinned")` for a menu item, a
+  window title and a panel title.
+- A choice needs one call for each side. Write
+  `clip.isPinned ? String(localized: "Unpin") : String(localized: "Pin")`, and
+  never `String(localized: clip.isPinned ? "Unpin" : "Pin")`. The extractor reads
+  the literal at the call, so a variable gives no key.
+
+`SWIFT_EMIT_LOC_STRINGS` in `project.yml` makes the compiler write a
+`.stringsdata` file for each source file. This command reads them and adds the
+new keys to the catalog:
+
+```bash
+make debug
+xcrun xcstringstool sync Resources/Localizable.xcstrings --stringsdata \
+  build/Build/Intermediates.noindex/ClipboardController.build/Debug/ClipboardController.build/Objects-normal/arm64/*.stringsdata
+```
+
+Then write the six values of each new key by hand. The key is the English text,
+so the build writes no English row for it and `en.lproj` stays nearly empty.
+`Tests/…/LocalizationTests.swift` compares the languages with each other, so a
+translation that is missing fails the test run.
+
+A number needs the plural forms of the language. A key like
+`Delete a clip after %lld days` therefore carries a `variations.plural` block
+with `one` and `other` for each language that counts differently.
+
+The AppleScript terminology in `Resources/clipboard-controller.sdef` stays
+English. A script is code, and its words are the names of its commands. The
+spoken phrases of `ClipboardControllerShortcuts` stay English too: App Intents
+reads them from an `AppShortcuts.strings` file for each language, and not from
+the catalog. The title and the description of an intent come from the catalog,
+so the Shortcuts app shows them translated.
+
+The tests load into the real application, so the application answers in the
+language of the user. A test must never compare with English words. Compare with
+`String(localized: …)`, or ask for the part that no language changes, as
+`ClipTests` does with the size of an image.
+
 ## Releases
 
 `.github/workflows/release.yml` publishes a release. A tag that starts with `v`

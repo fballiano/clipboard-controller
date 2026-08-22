@@ -33,7 +33,7 @@ final class HistoryWindowController {
             backing: .buffered,
             defer: false
         )
-        window.title = "Clipboard history"
+        window.title = String(localized: "Clipboard history")
         window.setFrameAutosaveName("history")
         // The window is kept for the next call, so it must survive its close.
         window.isReleasedWhenClosed = false
