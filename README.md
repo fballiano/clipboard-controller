@@ -55,18 +55,8 @@ Or download the DMG from the
 [latest release](https://github.com/fballiano/clipboard-controller/releases/latest).
 Open it and drag **clipboard-controller** into **Applications**.
 
-> [!IMPORTANT]
-> The application is signed ad hoc, not with an Apple Developer ID, so macOS
-> blocks the first launch. Open **System Settings → Privacy & Security** and
-> select **Open Anyway**. Homebrew also marks the application, so this step
-> applies to both ways to install.
->
-> A terminal does the same thing:
->
-> ```bash
-> xattr -dr com.apple.quarantine /Applications/clipboard-controller.app
-> open /Applications/clipboard-controller.app
-> ```
+The application is signed with an Apple Developer ID and notarized by Apple, so
+it opens like any other application.
 
 The application has no dock icon. It appears in the menu bar.
 
