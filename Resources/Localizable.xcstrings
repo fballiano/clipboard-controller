@@ -307,36 +307,36 @@
         }
       }
     },
-    "About clipboard-controller": {
+    "About Clipyard": {
       "localizations": {
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Informazioni su clipboard-controller"
+            "value": "Informazioni su Clipyard"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "À propos de clipboard-controller"
+            "value": "À propos de Clipyard"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Acerca de clipboard-controller"
+            "value": "Acerca de Clipyard"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sobre o clipboard-controller"
+            "value": "Sobre o Clipyard"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Über clipboard-controller"
+            "value": "Über Clipyard"
           }
         }
       }
@@ -813,6 +813,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zwischenablageverlauf"
+          }
+        }
+      }
+    },
+    "Clipyard Preferences": {
+      "localizations": {
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferenze di Clipyard"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Préférences de Clipyard"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferencias de Clipyard"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferências do Clipyard"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clipyard-Einstellungen"
           }
         }
       }
@@ -2037,36 +2071,36 @@
         }
       }
     },
-    "Quit clipboard-controller": {
+    "Quit Clipyard": {
       "localizations": {
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Esci da clipboard-controller"
+            "value": "Esci da Clipyard"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quitter clipboard-controller"
+            "value": "Quitter Clipyard"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salir de clipboard-controller"
+            "value": "Salir de Clipyard"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Encerrar o clipboard-controller"
+            "value": "Encerrar o Clipyard"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "clipboard-controller beenden"
+            "value": "Clipyard beenden"
           }
         }
       }
@@ -2731,36 +2765,36 @@
         }
       }
     },
-    "Start clipboard-controller at login": {
+    "Start Clipyard at login": {
       "localizations": {
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avvia clipboard-controller al login"
+            "value": "Avvia Clipyard al login"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lancer clipboard-controller à l'ouverture de session"
+            "value": "Lancer Clipyard à l'ouverture de session"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Iniciar clipboard-controller al iniciar sesión"
+            "value": "Iniciar Clipyard al iniciar sesión"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Iniciar o clipboard-controller ao fazer login"
+            "value": "Iniciar o Clipyard ao fazer login"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "clipboard-controller bei der Anmeldung starten"
+            "value": "Clipyard bei der Anmeldung starten"
           }
         }
       }
@@ -3136,40 +3170,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Loslösen"
-          }
-        }
-      }
-    },
-    "clipboard-controller Preferences": {
-      "localizations": {
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preferenze di clipboard-controller"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Préférences de clipboard-controller"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preferencias de clipboard-controller"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preferências do clipboard-controller"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "clipboard-controller Einstellungen"
           }
         }
       }

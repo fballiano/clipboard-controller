@@ -58,8 +58,8 @@ targets:
     info:
       path: Support/Info.plist
       properties:
-        CFBundleDisplayName: clipboard-controller
-        CFBundleName: clipboard-controller
+        CFBundleDisplayName: Clipyard
+        CFBundleName: Clipyard
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleIconName: AppIcon
@@ -67,6 +67,7 @@ targets:
         LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
         LSUIElement: true
         NSAppleScriptEnabled: true
+        # The file keeps the old name of the app. No user sees it.
         OSAScriptingDefinition: clipboard-controller.sdef
         NSSupportsAutomaticTermination: false
         NSSupportsSuddenTermination: false
@@ -74,8 +75,12 @@ targets:
           Copyright © 2026 Fabrizio Balliano. MIT licensed.
     settings:
       base:
+        # The bundle identifier keeps the old name of the app on purpose. The
+        # settings, the login item and the permissions of an existing install
+        # depend on it.
         PRODUCT_BUNDLE_IDENTIFIER: com.fabrizioballiano.clipboard-controller
-        PRODUCT_NAME: clipboard-controller
+        PRODUCT_NAME: Clipyard
+        # The module keeps its name, so the tests and App Intents do not change.
         PRODUCT_MODULE_NAME: ClipboardController
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         COMBINE_HIDPI_IMAGES: YES
@@ -100,7 +105,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.fabrizioballiano.clipboard-controller-tests
         PRODUCT_MODULE_NAME: ClipboardControllerTests
         GENERATE_INFOPLIST_FILE: YES
-        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/clipboard-controller.app/Contents/MacOS/clipboard-controller"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Clipyard.app/Contents/MacOS/Clipyard"
         BUNDLE_LOADER: "$(TEST_HOST)"
 
 schemes:

@@ -6,7 +6,7 @@ import Testing
 @Suite("Preferences")
 struct PreferencesTests {
     private func makeDefaults() -> UserDefaults {
-        let name = "clipboard-controller.tests.\(UUID().uuidString)"
+        let name = "clipyard.tests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: name)!
         defaults.removePersistentDomain(forName: name)
         return defaults

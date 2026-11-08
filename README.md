@@ -1,17 +1,17 @@
 <div align="center">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="Docs/icon-dark.png" />
-<img src="Docs/icon-light.png" width="128" alt="clipboard-controller" />
+<img src="Docs/icon-light.png" width="128" alt="Clipyard" />
 </picture>
-<h1>clipboard-controller</h1>
+<h1>Clipyard</h1>
 <p><strong>A menu bar clipboard history and clipboard cleaner for macOS.</strong></p>
 <p>
-<a href="https://github.com/fballiano/clipboard-controller/releases/latest"><img src="https://img.shields.io/github/v/release/fballiano/clipboard-controller?style=for-the-badge&color=2F7D3A&labelColor=1B1F23" alt="Latest release" /></a>
-<a href="https://github.com/fballiano/clipboard-controller/releases"><img src="https://img.shields.io/github/downloads/fballiano/clipboard-controller/total?style=for-the-badge&color=2F7D3A&labelColor=1B1F23" alt="Downloads" /></a>
+<a href="https://github.com/fballiano/clipyard/releases/latest"><img src="https://img.shields.io/github/v/release/fballiano/clipyard?style=for-the-badge&color=2F7D3A&labelColor=1B1F23" alt="Latest release" /></a>
+<a href="https://github.com/fballiano/clipyard/releases"><img src="https://img.shields.io/github/downloads/fballiano/clipyard/total?style=for-the-badge&color=2F7D3A&labelColor=1B1F23" alt="Downloads" /></a>
 <img src="https://img.shields.io/badge/macOS-15%2B-2F7D3A?style=for-the-badge&labelColor=1B1F23&logo=apple&logoColor=white" alt="macOS 15 or later" />
 <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-2F7D3A?style=for-the-badge&labelColor=1B1F23" alt="MIT licence" /></a>
 </p>
-<p><a href="https://github.com/fballiano/clipboard-controller/releases/latest"><img src="https://img.shields.io/badge/Download%20for%20macOS-2F7D3A?style=for-the-badge&labelColor=2F7D3A&logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTQgMTd2MmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyIC0ydi0yIi8+PHBhdGggZD0iTTcgMTFsNSA1bDUgLTUiLz48cGF0aCBkPSJNMTIgNGwwIDEyIi8+PC9zdmc+" alt="Download for macOS" height="36" /></a></p>
+<p><a href="https://github.com/fballiano/clipyard/releases/latest"><img src="https://img.shields.io/badge/Download%20for%20macOS-2F7D3A?style=for-the-badge&labelColor=2F7D3A&logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTQgMTd2MmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyIC0ydi0yIi8+PHBhdGggZD0iTTcgMTFsNSA1bDUgLTUiLz48cGF0aCBkPSJNMTIgNGwwIDEyIi8+PC9zdmc+" alt="Download for macOS" height="36" /></a></p>
 </div>
 
 <table align=center><tr><td align=center>
@@ -42,18 +42,28 @@
 With [Homebrew](https://brew.sh):
 
 ```bash
-brew tap fballiano/clipboard-controller https://github.com/fballiano/clipboard-controller
-brew trust --cask fballiano/clipboard-controller/clipboard-controller
-brew install --cask clipboard-controller
+brew tap fballiano/tap
+brew trust --tap fballiano/tap
+brew install --cask clipyard
 ```
 
-The URL is part of the first command, because this repository is the tap itself.
 Homebrew 6 refuses to load a cask from a tap outside `Homebrew/*` until you
 trust it, so the second command is also necessary.
 
+Clipyard was called clipboard-controller before, and its cask was in the tap
+`fballiano/clipboard-controller`. If you installed it from that tap, run this
+command to move to the new tap:
+
+```bash
+brew uninstall --cask fballiano/clipboard-controller/clipboard-controller && brew install --cask fballiano/tap/clipyard && brew untap fballiano/clipboard-controller
+```
+
+Your settings and your clips stay. The new version reads them from the same
+place.
+
 Or download the DMG from the
-[latest release](https://github.com/fballiano/clipboard-controller/releases/latest).
-Open it and drag **clipboard-controller** into **Applications**.
+[latest release](https://github.com/fballiano/clipyard/releases/latest).
+Open it and drag **Clipyard** into **Applications**.
 
 The application is signed with an Apple Developer ID and notarized by Apple, so
 it opens like any other application.
@@ -94,7 +104,7 @@ Open **Preferences…** from the menu, or press <kbd>⌘</kbd><kbd>,</kbd>.
 | Show N clips in the menu | 20 | How many clips the menu lists. |
 | Delete the old clips automatically | on, keep 200 | Keeps only the newest N clips. |
 | Delete a clip after some days | off | An age limit, from 1 to 365 days. |
-| Start clipboard-controller at login | **on** | Registers a login item through `SMAppService`. The first launch switches it on. A later change by you stays. |
+| Start Clipyard at login | **on** | Registers a login item through `SMAppService`. The first launch switches it on. A later change by you stays. |
 
 A pinned clip stays. No limit ever deletes it.
 
@@ -129,23 +139,23 @@ and open the history. No shortcut is set until you record one.
 ## Automation
 
 ```applescript
-tell application "clipboard-controller" to clean clipboard        -- returns true or false
-tell application "clipboard-controller" to start cleaning
-tell application "clipboard-controller" to stop cleaning
-tell application "clipboard-controller" to start private mode
-tell application "clipboard-controller" to stop private mode
-tell application "clipboard-controller" to last clip              -- returns the newest text
-tell application "clipboard-controller" to clear history
+tell application "Clipyard" to clean clipboard        -- returns true or false
+tell application "Clipyard" to start cleaning
+tell application "Clipyard" to stop cleaning
+tell application "Clipyard" to start private mode
+tell application "Clipyard" to stop private mode
+tell application "Clipyard" to last clip              -- returns the newest text
+tell application "Clipyard" to clear history
 ```
 
 From a terminal:
 
 ```bash
-osascript -e 'tell application "clipboard-controller" to clean clipboard'
+osascript -e 'tell application "Clipyard" to clean clipboard'
 ```
 
 The same commands are App Intents, so the Shortcuts app lists them under
-**clipboard-controller**: Clean Clipboard, Set Automatic Cleaning, Set Private
+**Clipyard**: Clean Clipboard, Set Automatic Cleaning, Set Private
 Mode, Get Last Clip and Clear Clipboard History. Spotlight runs them too.
 
 ## Export
@@ -191,6 +201,9 @@ Four rules are always on. No setting turns them off:
 | Clips | `~/Library/Application Support/clipboard-controller/clipboard-controller.store` (SwiftData) |
 | Settings | `~/Library/Preferences/com.fabrizioballiano.clipboard-controller.plist` |
 
+The two paths keep the old name of the application, clipboard-controller. That
+way an update to Clipyard keeps your clips and your settings.
+
 <details>
 <summary><strong>Build from source</strong></summary>
 
@@ -210,7 +223,7 @@ make test        # run the unit tests
 make run         # build, then launch
 make dmg         # build the Release app and pack it into ./dist/*.dmg
 make generate    # rebuild ClipboardController.xcodeproj from project.yml (needs xcodegen)
-make uninstall   # remove /Applications/clipboard-controller.app
+make uninstall   # remove /Applications/Clipyard.app
 ```
 
 To work in Xcode, open `ClipboardController.xcodeproj` and press Run. The project

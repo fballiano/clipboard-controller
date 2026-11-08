@@ -110,11 +110,11 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         menu.addItem(.separator())
 
         add(to: menu, title: String(localized: "Preferences…"), action: #selector(showSettings), key: ",")
-        add(to: menu, title: String(localized: "About clipboard-controller"), action: #selector(showAbout))
+        add(to: menu, title: String(localized: "About Clipyard"), action: #selector(showAbout))
 
         menu.addItem(.separator())
 
-        add(to: menu, title: String(localized: "Quit clipboard-controller"), action: #selector(quit), key: "q")
+        add(to: menu, title: String(localized: "Quit Clipyard"), action: #selector(quit), key: "q")
     }
 
     /// The pinned clips, then the newest clips. The first nine rows of the two

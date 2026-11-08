@@ -1,6 +1,6 @@
 #!/usr/bin/env swift
 //
-// Draws the clipboard-controller application icon.
+// Draws the Clipyard application icon.
 //
 //   swift Tools/make-icon.swift
 //

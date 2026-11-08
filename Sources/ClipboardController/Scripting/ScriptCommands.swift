@@ -3,7 +3,7 @@ import Foundation
 
 /// The AppleScript commands.
 ///
-///     tell application "clipboard-controller" to clean clipboard
+///     tell application "Clipyard" to clean clipboard
 ///
 /// The class names are exported to the Objective-C runtime, because the
 /// scripting definition refers to them by name. Every command calls one method

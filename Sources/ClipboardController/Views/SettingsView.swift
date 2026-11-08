@@ -67,7 +67,7 @@ private struct GeneralSettingsView: View {
             }
 
             Section("Startup") {
-                Toggle("Start clipboard-controller at login", isOn: $loginItem.isEnabled)
+                Toggle("Start Clipyard at login", isOn: $loginItem.isEnabled)
 
                 if let error = loginItem.lastError {
                     Text(error)

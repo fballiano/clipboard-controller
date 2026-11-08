@@ -197,7 +197,7 @@ struct ClipStoreTests {
     func exportFileName() {
         let name = ClipStore.exportFileName(for: Date(timeIntervalSince1970: 0))
 
-        #expect(name.hasPrefix("clipboard-controller-"))
+        #expect(name.hasPrefix("Clipyard-"))
         #expect(name.hasSuffix(".json"))
     }
 }

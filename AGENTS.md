@@ -4,8 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this project is
 
-`clipboard-controller` is a macOS menu bar application. It does two things at
-once, because both read the same event, a change of the clipboard:
+Clipyard is a macOS menu bar application. It was called `clipboard-controller`
+before. Some names keep the old name on purpose. See "Names" below.
+
+Clipyard does two things at once, because both read the same event, a change of
+the clipboard:
 
 1. **A clipboard history.** It stores what you copy: text, formatted text, links
    and images. The menu gives every clip back.
@@ -148,9 +151,9 @@ new GitHub release. It passes the version of the tag as `MARKETING_VERSION` and
 the run number as `CURRENT_PROJECT_VERSION`, so `project.yml` does not need a
 change for each release.
 
-The last step then writes the version into `project.yml` and into
-`ClipboardController.xcodeproj/project.pbxproj`, so a local build shows the
-version of the last release. Do not edit the `MARKETING_VERSION` lines by hand.
+After the release, the step "Update the stored version" writes the version into
+`project.yml` and into `ClipboardController.xcodeproj/project.pbxproj`, so a
+local build shows the version of the last release. Do not edit the `MARKETING_VERSION` lines by hand.
 
 A release is signed with the Developer ID certificate and notarized by Apple.
 The workflow passes the signing settings to `make build` through `XCODE_FLAGS`,
@@ -159,29 +162,32 @@ notarizes the app with `Tools/notarize.sh`, packs the stapled app with
 would build again, and a second build can sign the app again and drop its
 ticket. Local builds stay signed ad hoc and need no certificate.
 
-The variable and the five secrets that the workflow needs are listed at the top
+The variable and the six secrets that the workflow needs are listed at the top
 of `release.yml`. A manual run with "dry run" on (the default) signs and
 notarizes, keeps the disk image as an artifact, and publishes nothing.
 
 ## Homebrew
 
-This repository is also the Homebrew tap. The cask is
-`Casks/clipboard-controller.rb`. A tap needs only a `Casks/` directory at its
-root, so no second repository exists. The name of the repository has no
-`homebrew-` prefix, so the tap command needs the URL:
+The cask lives in the shared tap `fballiano/homebrew-tap`, as
+`Casks/clipyard.rb`. The tap name is `fballiano/tap`:
 
 ```bash
-brew tap fballiano/clipboard-controller https://github.com/fballiano/clipboard-controller
-brew trust --cask fballiano/clipboard-controller/clipboard-controller
-brew install --cask clipboard-controller
+brew tap fballiano/tap
+brew trust --tap fballiano/tap
+brew install --cask clipyard
 ```
 
 Homebrew 6 refuses to load a cask from a tap outside `Homebrew/*` until the user
 trusts it, so `brew trust` is part of the instructions.
 
-The same last step of the workflow writes the new `version` and `sha256` into the
-cask and pushes the change to the default branch. Do not edit the two lines by
-hand.
+After each release, the workflow writes the new `version` and `sha256` into
+`Casks/clipyard.rb` and pushes the change to the tap. It uses the deploy key in
+the secret `TAP_DEPLOY_KEY`, which has write access to the tap only. Do not edit
+the two lines by hand.
+
+`Casks/clipboard-controller.rb` in this repository is the cask of the old tap,
+`fballiano/clipboard-controller`. It is frozen at the last release under the old
+name, and it is deprecated, so its users learn about the move. Do not update it.
 
 ## Project file
 
@@ -274,7 +280,8 @@ into three people.
 `ClipStore` holds the SwiftData container and does every read, write, prune and
 export. The store gets its own folder,
 `~/Library/Application Support/clipboard-controller/`, because the SwiftData
-default is shared with every other application of the user.
+default is shared with every other application of the user. The folder keeps
+the old name of the application on purpose, so an update keeps the clips.
 
 A second copy of the same content does not add a second row: `add` finds the row
 by `contentHash` and moves it to the top. A prune never deletes a pinned clip.
@@ -326,5 +333,30 @@ user keeps copying while the tests run.
   with a literal: inside the macro a bare literal becomes an `Int`.
 - Comments explain why, not what.
 - The bundle identifier is `com.fabrizioballiano.clipboard-controller`. The
-  product name is `clipboard-controller`. The module name is
-  `ClipboardController`.
+  product name is `Clipyard`. The module name is `ClipboardController`.
+
+## Names
+
+The application was called `clipboard-controller` before. The rule of the rename
+is simple: a name that the user sees is `Clipyard`, and a name that holds user
+data keeps the old name.
+
+These names are `Clipyard`:
+
+- The product name, so the application is `Clipyard.app`.
+- The disk image, `Clipyard-<version>.dmg`, and the cask, `clipyard`.
+- Every text in the menu, the windows, the string catalog and the AppleScript
+  dictionary. A script says `tell application "Clipyard"`.
+- The repository, `https://github.com/fballiano/clipyard`.
+
+These names keep the old name. Do not change them:
+
+- The bundle identifier, `com.fabrizioballiano.clipboard-controller`. The
+  settings, the login item and the permissions of an existing install depend
+  on it.
+- The store, `~/Library/Application Support/clipboard-controller/clipboard-controller.store`.
+  A new path would hide the clips of an existing install.
+- The module name, `ClipboardController`, pinned with `PRODUCT_MODULE_NAME` in
+  `project.yml`. The tests import it, and the App Intents metadata can name it.
+- The project, the scheme, the targets, the source folders, the Swift types and
+  `Resources/clipboard-controller.sdef`. No user sees them.

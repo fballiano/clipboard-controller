@@ -398,7 +398,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fabrizioballiano.clipboard-controller";
 				PRODUCT_MODULE_NAME = ClipboardController;
-				PRODUCT_NAME = "clipboard-controller";
+				PRODUCT_NAME = Clipyard;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -420,7 +420,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fabrizioballiano.clipboard-controller";
 				PRODUCT_MODULE_NAME = ClipboardController;
-				PRODUCT_NAME = "clipboard-controller";
+				PRODUCT_NAME = Clipyard;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -575,7 +575,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fabrizioballiano.clipboard-controller-tests";
 				PRODUCT_MODULE_NAME = ClipboardControllerTests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/clipboard-controller.app/Contents/MacOS/clipboard-controller";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clipyard.app/Contents/MacOS/Clipyard";
 			};
 			name = Debug;
 		};
@@ -593,7 +593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fabrizioballiano.clipboard-controller-tests";
 				PRODUCT_MODULE_NAME = ClipboardControllerTests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/clipboard-controller.app/Contents/MacOS/clipboard-controller";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clipyard.app/Contents/MacOS/Clipyard";
 			};
 			name = Release;
 		};

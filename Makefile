@@ -1,4 +1,4 @@
-# clipboard-controller — build helpers.
+# Clipyard — build helpers.
 #
 #   make generate   regenerate ClipboardController.xcodeproj from project.yml (needs xcodegen)
 #   make build      build the Release app into ./build
@@ -20,7 +20,7 @@
 SHELL          := /bin/bash
 PROJECT        := ClipboardController.xcodeproj
 SCHEME         := ClipboardController
-APP            := clipboard-controller.app
+APP            := Clipyard.app
 BUILD_DIR      := $(CURDIR)/build
 DIST_DIR       := $(CURDIR)/dist
 APP_RELEASE    := $(BUILD_DIR)/Build/Products/Release/$(APP)
@@ -66,17 +66,17 @@ test:
 		| grep -vE 'linkd.autoShortcut|Process Instance Registry|synchronousRemoteObjectProxy'
 
 run: build
-	@pkill -f '/clipboard-controller.app/Contents/MacOS/clipboard-controller' || true
+	@pkill -f '/Clipyard.app/Contents/MacOS/Clipyard' || true
 	@open $(APP_RELEASE)
 
 install: build
-	@pkill -f '/clipboard-controller.app/Contents/MacOS/clipboard-controller' || true
+	@pkill -f '/Clipyard.app/Contents/MacOS/Clipyard' || true
 	@rm -rf /Applications/$(APP)
 	@cp -R $(APP_RELEASE) /Applications/$(APP)
 	@echo "Installed /Applications/$(APP)"
 
 uninstall:
-	@pkill -f '/clipboard-controller.app/Contents/MacOS/clipboard-controller' || true
+	@pkill -f '/Clipyard.app/Contents/MacOS/Clipyard' || true
 	@rm -rf /Applications/$(APP)
 	@echo "Removed /Applications/$(APP)"
 
@@ -90,12 +90,12 @@ package:
 	@set -euo pipefail; \
 	version=$$($(PLIST_BUDDY) -c "Print CFBundleShortVersionString" "$(APP_RELEASE)/Contents/Info.plist"); \
 	staging="$(DIST_DIR)/dmg"; \
-	image="$(DIST_DIR)/clipboard-controller-$$version.dmg"; \
+	image="$(DIST_DIR)/Clipyard-$$version.dmg"; \
 	rm -rf "$$staging" "$$image"; \
 	mkdir -p "$$staging"; \
 	cp -R "$(APP_RELEASE)" "$$staging/"; \
 	ln -s /Applications "$$staging/Applications"; \
-	hdiutil create -volname "clipboard-controller $$version" -srcfolder "$$staging" \
+	hdiutil create -volname "Clipyard $$version" -srcfolder "$$staging" \
 		-ov -format UDZO -quiet "$$image"; \
 	rm -rf "$$staging"; \
 	echo "Built $$image"

@@ -35,6 +35,10 @@ final class ClipStore {
     }
 
     /// `~/Library/Application Support/clipboard-controller/clipboard-controller.store`.
+    ///
+    /// The folder and the file keep the old name of the app on purpose. The app
+    /// was called clipboard-controller before Clipyard. A new name would hide
+    /// the clips of an existing install.
     static func storeURL() throws -> URL {
         let directory = try FileManager.default.url(
             for: .applicationSupportDirectory,
@@ -42,10 +46,12 @@ final class ClipStore {
             appropriateFor: nil,
             create: true
         )
+        // The old name of the app, on purpose. See the comment above.
         .appending(path: "clipboard-controller", directoryHint: .isDirectory)
 
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
 
+        // The old name of the app, on purpose. See the comment above.
         return directory.appending(
             path: "clipboard-controller.store",
             directoryHint: .notDirectory
@@ -255,9 +261,9 @@ final class ClipStore {
         return try encoder.encode(records())
     }
 
-    /// The suggested file name, for example `clipboard-controller-2026-08-21.json`.
+    /// The suggested file name, for example `Clipyard-2026-08-21.json`.
     static func exportFileName(for date: Date = .now) -> String {
-        "clipboard-controller-\(fileDateFormatter.string(from: date)).json"
+        "Clipyard-\(fileDateFormatter.string(from: date)).json"
     }
 
     private static let exportDateFormatter: ISO8601DateFormatter = {

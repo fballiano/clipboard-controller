@@ -12,6 +12,8 @@ cask "clipboard-controller" do
     strategy :github_latest
   end
 
+  deprecate! date: "2026-11-08", because: "has moved to fballiano/tap/clipyard"
+
   depends_on macos: :sequoia
 
   app "clipboard-controller.app"
