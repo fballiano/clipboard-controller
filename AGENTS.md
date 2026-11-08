@@ -185,9 +185,8 @@ After each release, the workflow writes the new `version` and `sha256` into
 the secret `TAP_DEPLOY_KEY`, which has write access to the tap only. Do not edit
 the two lines by hand.
 
-`Casks/clipboard-controller.rb` in this repository is the cask of the old tap,
-`fballiano/clipboard-controller`. It is frozen at the last release under the old
-name, and it is deprecated, so its users learn about the move. Do not update it.
+Until 1.2.1, this repository was its own tap, `fballiano/clipboard-controller`.
+It has no cask now. A user of the old tap moves with the commands in the README.
 
 ## Project file
 
